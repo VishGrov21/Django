@@ -5,13 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Django Test</title>
   <link rel="stylesheet" href={% static "css/demoStylesheet.css" %} />
 </head>
 <body>
-  <h1>Hello , This is from templates > first_proj > index.html</h1>
-  {{insert_me}}
-  <h1>This is a picture of Batman</h1>
-  <img src={% static "images/Batman.jpg" %} alt="Didn't Show Buddy!">
+  <div>
+    {% if access_record %}
+      <table class="table">
+        <th>Company Name</th>
+        <th>Date Accessed</th>
+        {% for acc in access_record %}
+          <tr>
+            <td>{{ acc.name }}</td>
+            <td>{{ acc.date }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      {%else%}
+        <h5>No Records Found, Kindly Debug Your Code</h5>
+      {% endif %}
+  </div>
 </body>
 </html>
