@@ -7,6 +7,13 @@
   <title>Document</title>
 </head>
 <body>
-  {{insert_me}}
+  {{ insert_me }}
+  {% for use in user %}
+  <ul>
+    <li>{{use.first_name}}</li>
+    <li>{{use.last_name}}</li>
+    <li>{{use.email}}</li>
+  </ul>
+  {% endfor %}
 </body>
 </html>
