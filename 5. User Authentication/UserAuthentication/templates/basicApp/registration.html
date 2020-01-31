@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'basicApp/base.html' %} {% load staticfiles %} {% block body_block %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Registration</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+      {% if registered %}
+      <h1>Thank You for registering</h1>
+      {% else %}
+      <h1>Register Here !</h1>
+      {% endif %}
+      <h3>Fill out the form</h3>
+
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ user_form.as_p }} {{ profile_form.as_p }}
+        <input type="submit" value="Register" />
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock %}

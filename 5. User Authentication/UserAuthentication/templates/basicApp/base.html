@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Base</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="{% url 'basicApp:index' %}" class="navbar-brand">Django</a>
+          </li>
+          <li>
+            <a href="{% url 'admin:index' %}" class="navbar-link">Admin</a>
+          </li>
+          <li>
+            <a href="{% url 'basicApp:register' %}" class="navbar-link"
+              >Register</a
+            >
+          </li>
+          {% if user.is_authenticated %}
+          <li>
+            <a class="navbar-link" href="{% url 'basicApp:logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li>
+            <a class="navbar-link" href="{% url 'basicApp:login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    {% block body_block %} {% endblock %}
+  </body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+/>
